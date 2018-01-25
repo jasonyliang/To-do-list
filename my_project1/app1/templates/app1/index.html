@@ -1,0 +1,51 @@
+{% extends 'app1/base.html' %}
+
+<html>
+    <head>
+        
+        
+    </head>
+    <body>
+        {% block body%}
+        <!--
+        {% if task_list %}
+            <ul>
+                {% for task in task_list %}
+            <li> 
+                <a href="{% url 'app1:detail' task.id %}">{{task.task_name}}</a>
+            </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+        {% endif %}
+        -->
+
+        <div class="container" >
+            <h2><font color = "white">Todays list</h2>
+            <p>Finish these tasks!</font></p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><font color = 'yellow'> Task Name</font></th>
+                        <th><font color = 'yellow'>Task priority</font></th>
+                        <th><font color = 'yellow'>Action</font></th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if object_list %}
+                        {% for task in object_list %}
+                        <tr class="active">
+                            <td><a href="{% url 'app1:detail' task.id %}">{{task.task_name}}</a></td>
+                            <td><b>{{task.task_priority}}</b></td>
+                            <td><button type="submit" class="btn btn-success">Done</button></td>
+                        </tr>
+                        {% endfor %}
+
+                    {% endif %}
+                </tbody>
+            </table>
+
+        </div>
+        {% endblock %}
+    </body>
+</html>
